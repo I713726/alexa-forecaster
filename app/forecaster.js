@@ -30,7 +30,7 @@ module.exports = function(req, res) {
         * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
     } else if (req.body.request.type === 'IntentRequest' &&
-               req.body.request.intent.name === 'Weather') {
+               req.body.request.intent.name === 'WeatherIntent') {
 
         if (req.body.request.intent.slots.When &&
             req.body.request.intent.slots.When.value) {
