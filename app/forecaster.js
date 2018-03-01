@@ -12,7 +12,7 @@ module.exports = function(req, res) {
 
     if (req.body.request.type === 'LaunchRequest') {
         console.log('In side LaunchRequest :\n', req.body.request.type);
-		return res.json(
+		res.json(
             buildResponse(
                 { dateRequested: true },
                 '<speak>I can tell you the weather<break time="1s"/> but you must give me a day!</speak>',
@@ -90,12 +90,12 @@ function buildResponse(session, speech, card, end) {
 	console.log('In side buildResponse - card:\n', card);
 	console.log('In side buildResponse - end:\n', end);
 	return {
-        version: VERSION,
-        sessionAttributes: session,
+        //version: VERSION,
+        //sessionAttributes: session,
         response: {
             outputSpeech: {
-                type: 'SSML',
-                ssml: speech
+                type: 'PlainText',
+                text: speech
             },
             card: card,
             shouldEndSession: !!end

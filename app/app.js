@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
     res.json({ message: 'The forecaster is up and running.', since: (new Date()).toString() });
 });
 
-app.post('/forecast', verify, function(req, res) {
+/*app.post('/forecast', verify, function(req, res) {
     // We'll fill this out later!
 	console.log('Forecaster is up and running on port %d', req.body.request.type);
     res.json({
@@ -34,9 +34,9 @@ app.post('/forecast', verify, function(req, res) {
 				shouldEndSession: true
 			}
         });
-});
+});*/
 
-//app.post('/forecast', verify, forecaster);
+app.post('/forecast', verify, forecaster);
 
 
 app.listen(app.get('port'), function() {
