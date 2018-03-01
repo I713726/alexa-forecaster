@@ -3,7 +3,8 @@
 let express = require('express'),
     bodyParser = require('body-parser'),
     verify = require('./verify'),
-    forecaster = require('./forecaster');
+    forecaster = require('./forecaster'),
+	voya401k = require('./voya401k');
 
 let app = express();
 
@@ -38,6 +39,7 @@ app.get('/', function(req, res) {
 
 app.post('/forecast', verify, forecaster);
 
+app.post('/voya401k', verify, voya401k);
 
 app.listen(app.get('port'), function() {
     console.log('Forecaster is up and running on port %d', app.get('port'));

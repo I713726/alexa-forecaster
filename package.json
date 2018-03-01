@@ -1,18 +1,18 @@
 {
-  "name": "alexa-forecaster",
+  "name": "alexa-Voya401k",
   "version": "1.0.0",
-  "description": "A better weather reader for Alexa based on data from forecast.io",
+  "description": "VOYA 401K",
   "main": "app/app.js",
   "engines": {
     "node": "6.2.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jakerella/alexa-forecaster.git"
+    "url": "git+https://github.com/sreerpk@gmail.com/alexa-forecaster.git"
   },
-  "author": "Jordan Kasper",
+  "author": "Srini Kunkalaguntla",
   "license": "MIT",
-  "homepage": "https://github.com/jakerella/alexa-forecaster",
+  "homepage": "https://github.com/sreerpk@gmail.com/alexa-forecaster",
   "dependencies": {
     "alexa-verifier": "0.0.5",
     "body-parser": "^1.15.2",
