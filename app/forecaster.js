@@ -11,7 +11,8 @@ module.exports = function(req, res) {
     console.log('New request for the forecaster:\n', req.body);
 
     if (req.body.request.type === 'LaunchRequest') {
-        res.json(
+        console.log('In side LaunchRequest :\n', req.body.request.type);
+		res.json(
             buildResponse(
                 { dateRequested: true },
                 '<speak>I can tell you the weather<break time="1s"/> but you must give me a day!</speak>',
@@ -21,7 +22,7 @@ module.exports = function(req, res) {
         );
 
     } else if (req.body.request.type === 'SessionEndedRequest') {
-
+		console.log('In side SessionEndedRequest :\n', req.body.request.type);
        if (req.body.request.reason === 'ERROR') {
            console.error('Alexa ended the session due to an error');
        }
@@ -31,10 +32,12 @@ module.exports = function(req, res) {
 
     } else if (req.body.request.type === 'IntentRequest' &&
                req.body.request.intent.name === 'WeatherIntent') {
-
+		console.log('In side IntentRequest and  WeatherIntent:\n', req.body.request.type);
+		console.log('In side IntentRequest and  WeatherIntent:\n', req.body.request.intent.name);
         if (req.body.request.intent.slots.When &&
             req.body.request.intent.slots.When.value) {
-
+			console.log('In side IntentRequest and  WeatherIntent:\n', req.body.request.intent.slots.When);
+			console.log('In side IntentRequest and  WeatherIntent:\n', req.body.request.intent.slots.When.value);
             getWeather(new Date(req.body.request.intent.slots.When.value))
                 .then(function(weather) {
                     console.log('responding to weather request for ' + req.body.request.intent.slots.When.value + ' with ', weather);
@@ -81,7 +84,10 @@ module.exports = function(req, res) {
 
 
 function buildResponse(session, speech, card, end) {
-    return {
+    console.log('In side buildResponse - speech:\n', speech);
+	console.log('In side buildResponse - card:\n', card);
+	console.log('In side buildResponse - end:\n', end);
+	return {
         version: VERSION,
         sessionAttributes: session,
         response: {
