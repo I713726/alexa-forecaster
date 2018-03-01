@@ -24,6 +24,7 @@ app.get('/', function(req, res) {
 
 app.post('/forecast', verify, function(req, res) {
     // We'll fill this out later!
+	console.log('Forecaster is up and running on port %d', req.body.request.type);
     res.json({ hello: 'world' });
 });
 
