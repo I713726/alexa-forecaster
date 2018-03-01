@@ -38,7 +38,7 @@ module.exports = function(req, res) {
             req.body.request.intent.slots.When.value) {
 			console.log('In side IntentRequest and  WeatherIntent:\n', req.body.request.intent.slots.When);
 			console.log('In side IntentRequest and  WeatherIntent:\n', req.body.request.intent.slots.When.value);
-            getWeather(new Date(req.body.request.intent.slots.When.value))
+            /*getWeather(new Date(req.body.request.intent.slots.When.value))
                 .then(function(weather) {
                     console.log('responding to weather request for ' + req.body.request.intent.slots.When.value + ' with ', weather);
                     res.json(
@@ -49,7 +49,9 @@ module.exports = function(req, res) {
                     res.json(
                         buildResponse( {}, '<speak>' + err + '</speak>', {}, true )
                     );
-                });
+                });*/
+				buildResponse( {}, '<speak>Lots of sun and breezy conditions are in store.</speak>', {}, true )
+				
 
         } else {
 
