@@ -12,7 +12,7 @@ module.exports = function(req, res) {
 
     if (req.body.request.type === 'LaunchRequest') {
         console.log('In side LaunchRequest :\n', req.body.request.type);
-		res.json(
+		return res.json(
             buildResponse(
                 { dateRequested: true },
                 '<speak>I can tell you the weather<break time="1s"/> but you must give me a day!</speak>',
