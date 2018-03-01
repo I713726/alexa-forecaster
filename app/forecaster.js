@@ -90,12 +90,12 @@ function buildResponse(session, speech, card, end) {
 	console.log('In side buildResponse - card:\n', card);
 	console.log('In side buildResponse - end:\n', end);
 	return {
-        //version: VERSION,
-        //sessionAttributes: session,
+        version: VERSION,
+        sessionAttributes: session,
         response: {
             outputSpeech: {
-                type: 'PlainText',
-                text: speech
+                type: 'SSML',
+                ssml: speech
             },
             //card: card,
             shouldEndSession: !!end
