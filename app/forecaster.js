@@ -50,7 +50,9 @@ module.exports = function(req, res) {
                         buildResponse( {}, '<speak>' + err + '</speak>', {}, true )
                     );
                 });*/
-				buildResponse( {}, '<speak>Lots of sun and breezy conditions are in store.</speak>', {}, true )
+				res.json( 
+					buildResponse( {}, '<speak>Lots of sun and breezy conditions are in store.</speak>', {}, true )
+					);
 				
 
         } else {
