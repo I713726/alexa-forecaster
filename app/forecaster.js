@@ -97,7 +97,7 @@ function buildResponse(session, speech, card, end) {
                 type: 'PlainText',
                 text: speech
             },
-            card: card,
+            //card: card,
             shouldEndSession: !!end
         }
     };
