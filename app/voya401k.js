@@ -29,7 +29,7 @@ module.exports = function(req, res) {
         * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
     } else if (req.body.request.type === 'IntentRequest' &&
-               req.body.request.intent.name === 'Voya401kIntent') {
+               req.body.request.intent.name === 'VoyaHowMyAccountIntent') {
 				res.json( 
 					buildResponse( {}, '<speak>Sure Tom, As of February 15, 2018, your account balance is $55,000. Your rate of return for the past 12 months is 20%, which is above the average portfolio benchmark for this period. Nice job making your money work for you! It looks like you are currently projected to have enough money to retire at age 70. Would you like to hear suggestions to be able retire a little sooner?</speak>', {}, true )
 					);
