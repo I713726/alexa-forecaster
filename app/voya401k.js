@@ -12,6 +12,7 @@ module.exports = function(req, res) {
     if (req.body.request.type === 'LaunchRequest') {
         console.log('In side LaunchRequest :\n', req.body.request.type);
 		var dataRow = readData('1111');
+		console.log('datRow :', dataRow );
 		console.log('Excel First Name :\n', dataRow.FirstName);
 		
 		res.json(
@@ -69,7 +70,7 @@ module.exports = function(req, res) {
 };
 
 function readData(id) {
-	
+	console.log('id: ', id);
 	var workbook = XLSX.readFile('./Master.xlsx');
 	var sheet_name_list = workbook.SheetNames;
 	var xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
@@ -77,6 +78,7 @@ function readData(id) {
 	xlData.forEach(function(row) { 
 		console.log(row.No);
 		if (id == row.No) {
+			console.log('inside loop:', row.No);
 			return row;
 		}
 	});
