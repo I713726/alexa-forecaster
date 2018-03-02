@@ -1,6 +1,7 @@
 'use strict';
 
 let request = require('request');
+var XLSX = require('xlsx');
 
 const VERSION = '1.0';
 
@@ -10,6 +11,9 @@ module.exports = function(req, res) {
 
     if (req.body.request.type === 'LaunchRequest') {
         console.log('In side LaunchRequest :\n', req.body.request.type);
+		var dataRow = readData('1111');
+		console.log('Excel First Name :\n', dataRow.FirstName);
+		
 		res.json(
             buildResponse(
                 {},
@@ -64,6 +68,20 @@ module.exports = function(req, res) {
 
 };
 
+function readData(id) {
+	
+	var workbook = XLSX.readFile('Master.xlsx');
+	var sheet_name_list = workbook.SheetNames;
+	var xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
+	console.log(xlData);
+	xlData.forEach(function(row) { 
+		console.log(row.No);
+		if (id == row.No) {
+			return row;
+		}
+	});
+    
+}
 
 function buildResponse(session, speech, card, end) {
     return {
