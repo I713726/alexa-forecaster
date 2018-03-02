@@ -66,7 +66,7 @@ module.exports = function(req, res) {
 				res.json( 
 					buildResponse( 
 						{ questionNo: '1', voayPin : dataRow.No }, 
-						'<speak>Sure '+dataRow.FirstName+', As of February 15, 2018, your account balance is '+dataRow.Accountbalance+'. Your rate of return for the past 12 months is '+dataRow.PersonalRateofReturn+', which is above the average portfolio benchmark for this period. Nice job making your money work for you! It looks like you are currently projected to have enough money to retire at age '+dataRow.Age+'. Would you like to hear suggestions to be able retire a little sooner?</speak>', 
+						'<speak>Sure '+dataRow.FirstName+', As of '+new Date()+', your account balance is '+dataRow.Accountbalance+'. Your rate of return for the past 12 months is '+dataRow.PersonalRateofReturn+', which is above the average portfolio benchmark for this period. Nice job making your money work for you! It looks like you are currently projected to have enough money to retire at age '+dataRow.Age+'. Would you like to hear suggestions to be able retire a little sooner?</speak>', 
 						{}, 
 						'',
 						false )
@@ -98,7 +98,7 @@ module.exports = function(req, res) {
 					res.json( 
 						buildResponse( 
 							{}, 
-							'<speak>Ok Sreeni!, I understand thank you for using Voya 401k service, have a nice day!</speak>', 
+							'<speak>Ok '+dataRow.FirstName+'!, I understand thank you for using Voya 401k service, have a nice day!</speak>', 
 							{}, 
 							'',
 							true )
