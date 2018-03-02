@@ -63,10 +63,12 @@ module.exports = function(req, res) {
 		if ( req.body.session.attributes && req.body.session.attributes.voayPin ) {
 			var dataRow = readData(req.body.session.attributes.voayPin);
 			if (req.body.request.intent.name === 'VoyaHowMyAccountIntent') {
+				var value = new Date();
+				var dateVal =  value.getMonth()+1 + "/" + value.getDate() + "/" + value.getFullYear();
 				res.json( 
 					buildResponse( 
 						{ questionNo: '1', voayPin : dataRow.No }, 
-						'<speak>Sure '+dataRow.FirstName+', As of '+new Date()+', your account balance is '+dataRow.Accountbalance+'. Your rate of return for the past 12 months is '+dataRow.PersonalRateofReturn+', which is above the average portfolio benchmark for this period. Nice job making your money work for you! It looks like you are currently projected to have enough money to retire at age '+dataRow.Age+'. Would you like to hear suggestions to be able retire a little sooner?</speak>', 
+						'<speak>Sure '+dataRow.FirstName+', As of '+dateVal+', your account balance is '+dataRow.Accountbalance+'. Your rate of return for the past 12 months is '+dataRow.PersonalRateofReturn+', which is above the average portfolio benchmark for this period. Nice job making your money work for you! It looks like you are currently projected to have enough money to retire at age '+dataRow.Age+'. Would you like to hear suggestions to be able retire a little sooner?</speak>', 
 						{}, 
 						'',
 						false )
