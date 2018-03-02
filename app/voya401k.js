@@ -18,8 +18,9 @@ module.exports = function(req, res) {
 		res.json(
             buildResponse(
                 {},
-                '<speak>Hi, please say your PIN number</speak>',
+                '<speak>Welcome to Voya 401k service, to get started please say the four digit PIN you setup to enabling the skill? </speak>',
                 {},
+				'<speak>to get started please say the four digit PIN you setup to enabling the skill?</speak>',
                 false
             )
         );
@@ -43,6 +44,7 @@ module.exports = function(req, res) {
 						{voayPin : dataRow.No},
 						'<speak>Hi '+dataRow.FirstName+', how can I help you with your ' +dataRow.PlanName+ ' today</speak>',
 						{},
+						'',
 						false
 					)
 				);
@@ -52,6 +54,7 @@ module.exports = function(req, res) {
 						{},
 						'<speak>Invalid PIN or No Account setup!</speak>',
 						{},
+						'',
 						true
 					)
 				);
@@ -65,6 +68,7 @@ module.exports = function(req, res) {
 						{ questionNo: '1', voayPin : dataRow.No }, 
 						'<speak>Sure '+dataRow.FirstName+', As of February 15, 2018, your account balance is '+dataRow.Accountbalance+'. Your rate of return for the past 12 months is '+dataRow.PersonalRateofReturn+', which is above the average portfolio benchmark for this period. Nice job making your money work for you! It looks like you are currently projected to have enough money to retire at age '+dataRow.Age+'. Would you like to hear suggestions to be able retire a little sooner?</speak>', 
 						{}, 
+						'',
 						false )
 					);
 			} else if (req.body.request.intent.name === 'VoyaYesIntent') {
@@ -74,6 +78,7 @@ module.exports = function(req, res) {
 							{ questionNo: '2', voayPin : dataRow.No}, 
 							'<speak>You are doing a great job of saving 6% from your pay but if you increase your savings rate to 8% you could retire at age 67.  Would you like me to increase your savings rate by 2% now?</speak>', 
 							{}, 
+							'',
 							false )
 						);
 				} else if (req.body.session.attributes && req.body.session.attributes.questionNo 
@@ -83,6 +88,7 @@ module.exports = function(req, res) {
 							{}, 
 							'<speak>Ok, great. I’ve done that for you. Congratulations your future self will thank you!</speak>', 
 							{}, 
+							'',
 							true )
 						);
 				}
@@ -94,6 +100,7 @@ module.exports = function(req, res) {
 							{}, 
 							'<speak>Ok Sreeni!, I understand thank you for using Voya 401k service, have a nice day!</speak>', 
 							{}, 
+							'',
 							true )
 						);
 				} else if (req.body.session.attributes && req.body.session.attributes.questionNo && req.body.session.attributes.questionNo == '2') {
@@ -102,6 +109,7 @@ module.exports = function(req, res) {
 							{questionNo: '3', voayPin : dataRow.No}, 
 							'<speak>Ok, I understand.  Would you want to Save More in the future? I can sign you up to save 1% more a year from now?</speak>', 
 							{}, 
+							'',
 							false )
 						);
 				}
@@ -111,6 +119,7 @@ module.exports = function(req, res) {
 						{}, 
 						'<speak>Ok, thank you for using Voya 401k service, have a nice day!</speak>', 
 						{}, 
+						'',
 						true )
 				);
 			}
@@ -120,6 +129,7 @@ module.exports = function(req, res) {
 					{},
 					'<speak>Invalid PIN or No Account setup!</speak>',
 					{},
+					'',
 					true
 				)
 			);
@@ -150,7 +160,7 @@ function readData(id) {
     
 }
 
-function buildResponse(session, speech, card, end) {
+function buildResponse(session, speech, card, reprompt, end) {
     return {
         version: VERSION,
         sessionAttributes: session,
@@ -159,6 +169,12 @@ function buildResponse(session, speech, card, end) {
                 type: 'SSML',
                 ssml: speech
             },
+			reprompt : {
+				outputSpeech: {
+					type: 'SSML',
+					ssml: reprompt
+				}
+			},
             //card: card,
             shouldEndSession: !!end
         }
