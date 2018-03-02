@@ -10,10 +10,10 @@ module.exports = function(req, res) {
     console.log('New request for the Voya 401k:\n', req.body);
 
     if (req.body.request.type === 'LaunchRequest') {
-        console.log('In side LaunchRequest :\n', req.body.request.type);
+        //console.log('In side LaunchRequest :\n', req.body.request.type);
 		var dataRow = readData(inputId);
-		console.log('datRow :', dataRow );
-		console.log('Excel First Name :\n', dataRow.FirstName);
+		//console.log('datRow :', dataRow );
+		//console.log('Excel First Name :\n', dataRow.FirstName);
 		
 		res.json(
             buildResponse(
@@ -25,7 +25,7 @@ module.exports = function(req, res) {
         );
 
     } else if (req.body.request.type === 'SessionEndedRequest') {
-		console.log('In side SessionEndedRequest :\n', req.body.request.type);
+		//console.log('In side SessionEndedRequest :\n', req.body.request.type);
        if (req.body.request.reason === 'ERROR') {
            console.error('Alexa ended the session due to an error');
        }
@@ -74,16 +74,16 @@ module.exports = function(req, res) {
 };
 
 function readData(id) {
-	console.log('id: ', id);
+	//console.log('id: ', id);
 	var workbook = XLSX.readFile('./Master.xlsx');
 	var sheet_name_list = workbook.SheetNames;
 	var xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
-	console.log(xlData);
+	//console.log(xlData);
 	var outData;
 	xlData.forEach(function(row) { 
-		console.log(row.No);
+		//console.log(row.No);
 		if (id == row.No) {
-			console.log('inside loop:', row.No);
+			//console.log('inside loop:', row.No);
 			outData = row;
 		}
 	});
