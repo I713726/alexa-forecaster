@@ -13,7 +13,7 @@ module.exports = function(req, res) {
 		res.json(
             buildResponse(
                 {},
-                '<speak>Hi Tom, how can I help you with your Voya 401(K) Savings Plan today</speak>',
+                '<speak>Hi Sreeni, how can I help you with your Voya 401(K) Savings Plan today</speak>',
                 {},
                 false
             )
@@ -31,7 +31,7 @@ module.exports = function(req, res) {
     } else if (req.body.request.type === 'IntentRequest' &&
 	   req.body.request.intent.name === 'VoyaHowMyAccountIntent') {
 		res.json( 
-			buildResponse( { questionNo: '1' }, '<speak>Sure Tom, As of February 15, 2018, your account balance is $55,000. Your rate of return for the past 12 months is 20%, which is above the average portfolio benchmark for this period. Nice job making your money work for you! It looks like you are currently projected to have enough money to retire at age 70. Would you like to hear suggestions to be able retire a little sooner?</speak>', {}, false )
+			buildResponse( { questionNo: '1' }, '<speak>Sure Sreeni, As of February 15, 2018, your account balance is $55,000. Your rate of return for the past 12 months is 20%, which is above the average portfolio benchmark for this period. Nice job making your money work for you! It looks like you are currently projected to have enough money to retire at age 70. Would you like to hear suggestions to be able retire a little sooner?</speak>', {}, false )
 			);
     } else if (req.body.request.type === 'IntentRequest' &&
 	   req.body.request.intent.name === 'VoyaYesIntent') {
@@ -50,7 +50,7 @@ module.exports = function(req, res) {
 		if (req.body.session.attributes && req.body.session.attributes.questionNo 
 			&& (req.body.session.attributes.questionNo == '1' || req.body.session.attributes.questionNo == '3')) {
 			res.json( 
-				buildResponse( {}, '<speak>Ok, I understand thank you for using Voya 401k service, have a nice day!</speak>', {}, true )
+				buildResponse( {}, '<speak>Ok Sreeni!, I understand thank you for using Voya 401k service, have a nice day!</speak>', {}, true )
 				);
 		} else if (req.body.session.attributes && req.body.session.attributes.questionNo && req.body.session.attributes.questionNo == '2') {
 			res.json( 
