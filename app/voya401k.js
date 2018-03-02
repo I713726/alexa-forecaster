@@ -75,13 +75,16 @@ function readData(id) {
 	var sheet_name_list = workbook.SheetNames;
 	var xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
 	console.log(xlData);
+	var outData;
 	xlData.forEach(function(row) { 
 		console.log(row.No);
 		if (id == row.No) {
 			console.log('inside loop:', row.No);
-			return row;
+			outData = row;
 		}
 	});
+	
+	return outData;
     
 }
 
