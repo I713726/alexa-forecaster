@@ -59,8 +59,7 @@ module.exports = function(req, res) {
 					)
 				);
 			}
-		}
-		if ( req.body.session.attributes && req.body.session.attributes.voayPin ) {
+		} else if ( req.body.session.attributes && req.body.session.attributes.voayPin ) {
 			var dataRow = readData(req.body.session.attributes.voayPin);
 			if (req.body.request.intent.name === 'VoyaHowMyAccountIntent') {
 				var value = new Date();
