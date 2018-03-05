@@ -44,7 +44,7 @@ module.exports = function(req, res) {
 						{voayPin : dataRow.No},
 						'<speak>Hi '+dataRow.FirstName+', how can I help you with your ' +dataRow.PlanName+ ' today</speak>',
 						{},
-						'<speak>You can say, things like "tell me how my account is doing" </speak>',
+						'<speak>You can say, things like tell me how my account is doing? </speak>',
 						false
 					)
 				);
@@ -140,7 +140,7 @@ module.exports = function(req, res) {
         res.json(
             buildResponse(
                 {},
-                '<speak>Welcome to Voya 401k service, you can ask me in different ways like "Please tell me how my account is doing?"</speak>',
+                '<speak>Welcome to Voya 401k service, you can ask me in different ways like Please tell me how my account is doing?</speak>',
                 {},
 				'',
                 false
