@@ -44,7 +44,7 @@ module.exports = function(req, res) {
 						{voayPin : dataRow.No},
 						'<speak>Hi '+dataRow.FirstName+', how can I help you with your ' +dataRow.PlanName+ ' today</speak>',
 						{},
-						'',
+						'<speak>You can say, things like "tell me how my account is doing" </speak>',
 						false
 					)
 				);
@@ -70,7 +70,7 @@ module.exports = function(req, res) {
 						{ questionNo: '1', voayPin : dataRow.No }, 
 						'<speak>Sure '+dataRow.FirstName+', As of '+dateVal+', your account balance is '+dataRow.Accountbalance+'. Your rate of return for the past 12 months is '+dataRow.PersonalRateofReturn+', which is above the average portfolio benchmark for this period. Nice job making your money work for you! It looks like you are currently projected to have enough money to retire at age '+dataRow.Age+'. Would you like to hear suggestions to be able retire a little sooner?</speak>', 
 						{}, 
-						'',
+						'<speck>Would you like to hear suggestions to be able retire a little sooner?</speak>',
 						false )
 					);
 			} else if (req.body.request.intent.name === 'VoyaYesIntent') {
@@ -80,7 +80,7 @@ module.exports = function(req, res) {
 							{ questionNo: '2', voayPin : dataRow.No}, 
 							'<speak>You are doing a great job of saving 6% from your pay but if you increase your savings rate to 8% you could retire at age 67.  Would you like me to increase your savings rate by 2% now?</speak>', 
 							{}, 
-							'',
+							'<speck>Would you like me to increase your savings rate by 2% now?</speak>',
 							false )
 						);
 				} else if (req.body.session.attributes && req.body.session.attributes.questionNo 
@@ -111,7 +111,7 @@ module.exports = function(req, res) {
 							{questionNo: '3', voayPin : dataRow.No}, 
 							'<speak>Ok, I understand.  Would you want to Save More in the future? I can sign you up to save 1% more a year from now?</speak>', 
 							{}, 
-							'',
+							'<speck>can sign you up to save 1% more a year from now?</speak>',
 							false )
 						);
 				}
@@ -140,7 +140,7 @@ module.exports = function(req, res) {
         res.json(
             buildResponse(
                 {},
-                '<speak>Welcome to Voya 401k service, you can ask different ways about your 401k account</speak>',
+                '<speak>Welcome to Voya 401k service, you can ask me in different ways like "Please tell me how my account is doing?"</speak>',
                 {},
 				'',
                 false
