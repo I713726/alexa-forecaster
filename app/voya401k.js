@@ -114,6 +114,28 @@ module.exports = function(req, res) {
 							false )
 						);
 				}
+			} else if (req.body.request.type === 'HelpIntent') {
+				res.json(
+					buildResponse(
+						{},
+						'<speak>Welcome to Voya 401k service, you can ask me in different ways like Please tell me how my account is doing?</speak>',
+						{},
+						'',
+						false
+					)
+				);
+
+			} else if (req.body.request.type === 'StopIntent' || req.body.request.type === 'CancelIntent') {
+				res.json(
+					buildResponse(
+						{},
+						'<speak>Ok, thank you for using Voya 401k service, have a nice day! </speak>',
+						{},
+						'',
+						true
+					)
+				);
+
 			} else {
 				res.json( 
 					buildResponse( 
@@ -135,28 +157,6 @@ module.exports = function(req, res) {
 				)
 			);
 		}
-    } else if (req.body.request.type === 'HelpIntent') {
-        res.json(
-            buildResponse(
-                {},
-                '<speak>Welcome to Voya 401k service, you can ask me in different ways like Please tell me how my account is doing?</speak>',
-                {},
-				'',
-                false
-            )
-        );
-
-    } else if (req.body.request.type === 'StopIntent' || req.body.request.type === 'CancelIntent') {
-        res.json(
-            buildResponse(
-                {},
-                '<speak>Ok, thank you for using Voya 401k service, have a nice day! </speak>',
-                {},
-				'',
-                true
-            )
-        );
-
     } else {
         console.error('Intent not implemented: ', req.body);
         res.status(504).json({ message: 'Intent Not Implemented' });
