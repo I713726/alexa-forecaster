@@ -39,18 +39,19 @@ module.exports = function(req, res) {
 		if (req.body.request.intent.name === 'VoyaPINIntent' && req.body.request.intent.slots.pin && req.body.request.intent.slots.pin.value) {
 			var dataRow = readData(req.body.request.intent.slots.pin.value);
 			if (dataRow) {
-				var timeGreeting = "";
+				var greet = "";
 				var currentTime = new Date();
-				if(currentTime.getHours()<12)
-					timeGreeting = "Good Morning!!";
-				else if(currentTime.getHours()<17)
-					timeGreeting = "Good Afternoon!!";
-				else 
-					timeGreeting = "Good Evening!!";
+				var hrs = currentTime.getHours();
+				if (hrs < 12)
+					greet = 'Good Morning';
+				else if (hrs >= 12 && hrs <= 17)
+					greet = 'Good Afternoon';
+				else if (hrs >= 17 && hrs <= 24)
+					greet = 'Good Evening';
 				res.json(
 					buildResponse(
 						{voayPin : dataRow.No},
-						'<speak>Hi '+dataRow.FirstName+' '+timeGreeting+' how can I help you with your ' +dataRow.PlanName+ ' today</speak>',
+						'<speak>Hi '+dataRow.FirstName+' '+greet+' how can I help you with your ' +dataRow.PlanName+ ' today</speak>',
 						{},
 						'<speak>You can say, things like tell me how my account is doing? </speak>',
 						false
