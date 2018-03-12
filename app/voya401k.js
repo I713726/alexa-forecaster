@@ -42,16 +42,16 @@ module.exports = function(req, res) {
 				var greet = "";
 				var currentTime = new Date();
 				var hrs = currentTime.getHours();
-				if (hrs < 12)
-					greet = 'Good Morning';
-				else if (hrs >= 12 && hrs <= 17)
-					greet = 'Good Afternoon';
-				else if (hrs >= 17 && hrs <= 24)
-					greet = 'Good Evening';
+				//if (hrs < 12)
+					//greet = 'Good Morning';
+				//else if (hrs >= 12 && hrs <= 17)
+					//greet = 'Good Afternoon';
+				//else if (hrs >= 17 && hrs <= 24)
+					//greet = 'Good Evening';
 				res.json(
 					buildResponse(
 						{voayPin : dataRow.No},
-						'<speak>Hi '+dataRow.FirstName+' '+greet+' how can I help you with your ' +dataRow.PlanName+ ' today</speak>',
+						'<speak>Hi '+dataRow.FirstName+', '+greet+'!! how can I help you with your ' +dataRow.PlanName+ ' today</speak>',
 						{},
 						'<speak>You can say, things like tell me how my account is doing? </speak>',
 						false
