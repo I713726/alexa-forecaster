@@ -50,7 +50,7 @@ module.exports = function(req, res) {
 				res.json(
 					buildResponse(
 						{voayPin : dataRow.No},
-						'<speak>Hi '+dataRow.FirstName+' <break time="1s"/> '+timeGreeting+' how can I help you with your ' +dataRow.PlanName+ ' today</speak>',
+						'<speak>Hi '+dataRow.FirstName+' '+timeGreeting+' how can I help you with your ' +dataRow.PlanName+ ' today</speak>',
 						{},
 						'<speak>You can say, things like tell me how my account is doing? </speak>',
 						false
