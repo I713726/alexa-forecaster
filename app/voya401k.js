@@ -70,7 +70,7 @@ module.exports = function(req, res) {
 			}
 		} else if ( req.body.session.attributes && req.body.session.attributes.voayPin ) {
 			var dataRow = readData(req.body.session.attributes.voayPin);
-			if (req.body.request.intent.name === 'VoyaHowMyAccountIntent') {
+			if (req.body.request.intent.name === 'VoyaHowMyAccountIntent' && req.body.session.attributes && !req.body.session.attributes.questionNo) {
 				var value = new Date();
 				var dateVal =  value.getMonth()+1 + "/" + value.getDate() + "/" + value.getFullYear();
 				res.json( 
